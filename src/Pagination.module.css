@@ -1,0 +1,38 @@
+.pagination{
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 40rem;
+    padding: 5rem;
+    background-color: black;
+    color: white;
+}
+.pagination ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.pagination li{
+    padding: 2rem;
+}
+.numbers{
+    margin-top: 0;
+    margin: 0% auto;
+    width: 90%;
+    max-width: 40rem;
+    padding: 0 5rem;
+}
+.numbers{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    margin-top: 0;
+}
+.numbers li{
+    padding: 2rem;
+    border: 1px solid red;
+    cursor: pointer;
+}
+.active{
+    background-color: green;
+    color: yellow;
+}
