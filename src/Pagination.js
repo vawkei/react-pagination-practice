@@ -8,10 +8,10 @@ const Pagination = () => {
   //when the page renders, it should start on firstpage, current Page:
   const [currentPage, setCurrentPage] = useState(1);
   //how many items do you want displayed on a page:
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
 
   //how many numbers do you want to show in the pagination
-  const [pageNumberLimit, setPageNumberLimit] = useState(5);
+  const [pageNumberLimit] = useState(5);
 
   //max number value to show in the pagination:
   const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
@@ -36,7 +36,7 @@ const Pagination = () => {
 
   //to configure the pagination buttons to be functional:
   const clickHandler = (numberId) => {
-    setCurrentPage(Number (numberId));
+    setCurrentPage(Number(numberId));
   };
 
   datax = (
@@ -56,30 +56,50 @@ const Pagination = () => {
       })}
     </ul>
   );
-  // const renderPagesNumber = numbers.map((number)=>{
-  //     return(
-  //         <li key={number} id={number}>{number}</li>
-  //     )
-  //   });
 
-  
+  //working on the previous button:
+  function prevButtonHandler(){
+    setCurrentPage(currentPage -1);
+    if((currentPage -1) % pageNumberLimit===0){
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit)
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit)
+    }
+  }
 
+
+  //working on the next button:
+  const nextButtonHandler = () => {
+  setCurrentPage(currentPage + 1);
+  if(currentPage +1 >maxPageNumberLimit){
+    setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+    setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit)
+  }
+  }
   return (
     <Fragment>
-      <div className={classes.pagination}>{datax}</div>
-      <ul className={classes.numbers}>
-        {numbers.map((number) => {
-          return (
-            <li
-              id={number}
-              key={number}
-              className={`${currentPage===number ? classes.active: ""}`}
-              onClick={()=>clickHandler(number)}>
-              {number}
-            </li>
-          );
-        })}
-      </ul>
+      <div className={classes.container}>
+        <div className={classes.pagination}>{datax}</div>
+        <ul className={classes.numbers}>
+          <button onClick={prevButtonHandler} className={`${currentPage===numbers[0]?classes.hidden:""}`}>Prev</button>
+          {numbers.map((number) => {
+            if (
+              number < maxPageNumberLimit + 1 &&
+              number > minPageNumberLimit
+            ) {
+              return (
+                <li
+                  id={number}
+                  key={number}
+                  className={`${currentPage === number ? classes.active : ""}`}
+                  onClick={() => clickHandler(number)}>
+                  {number}
+                </li>
+              );
+            }
+          })}
+          <button onClick={nextButtonHandler} className={`${currentPage===numbers.length ?classes.hidden:""}`}>Next</button>
+        </ul>
+      </div>
     </Fragment>
   );
 };

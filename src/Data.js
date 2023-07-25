@@ -56,7 +56,7 @@ export const data = [
     },
     {
         id:12,
-        name:"Johnny Cage",
+        name:"Jonni kage",
         status:"candy",
     },
     {
@@ -66,7 +66,7 @@ export const data = [
     },
     {
         id:14,
-        name:"Sonya Blade",
+        name:"Sunya Bleidz",
         status:"rock",
     },
     {

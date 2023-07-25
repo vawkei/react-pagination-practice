@@ -1,3 +1,7 @@
+.container{
+    height: 100%;
+}
+
 .pagination{
     margin: 3rem auto;
     width: 90%;
@@ -5,6 +9,7 @@
     padding: 5rem;
     background-color: black;
     color: white;
+    height: 80%;
 }
 .pagination ul{
     margin: 0;
@@ -12,7 +17,7 @@
     list-style: none;
 }
 .pagination li{
-    padding: 2rem;
+    padding: 1rem;
 }
 .numbers{
     margin-top: 0;
@@ -35,4 +40,10 @@
 .active{
     background-color: green;
     color: yellow;
+}
+button{
+    padding: 2rem;
+}
+.hidden{
+    display: none;
 }
